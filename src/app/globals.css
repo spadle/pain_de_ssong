@@ -1,26 +1,115 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-cream: #FFF8F0;
+  --color-cream-dark: #F5EDE3;
+  --color-warm-brown: #4A3228;
+  --color-brown-light: #6B4F3E;
+  --color-gold: #C8A97E;
+  --color-gold-light: #E8D5B5;
+  --color-rose: #D4A0A0;
+  --color-sage: #A8B5A0;
+  --color-charcoal: #2C2C2C;
+  --font-serif: var(--font-playfair);
+  --font-body: var(--font-cormorant);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #FFF8F0;
+  color: #4A3228;
+  font-family: var(--font-body), 'Georgia', serif;
+  overflow-x: hidden;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #FFF8F0;
+}
+::-webkit-scrollbar-thumb {
+  background: #C8A97E;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #4A3228;
+}
+
+/* Grain overlay */
+.grain-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* Decorative line */
+.decorative-line {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #C8A97E, transparent);
+}
+
+/* Menu card shimmer */
+.menu-card-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+.menu-card-shimmer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(200, 169, 126, 0.08), transparent);
+  transition: left 0.6s ease;
+}
+.menu-card-shimmer:hover::after {
+  left: 100%;
+}
+
+/* Floating animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Parallax text stroke */
+.text-stroke {
+  -webkit-text-stroke: 1px #C8A97E;
+  color: transparent;
+}
+
+/* Gallery image hover */
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+}
+.gallery-item img {
+  transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.gallery-item:hover img {
+  transform: scale(1.08);
+}
+
+/* Section divider */
+.section-divider {
+  background: linear-gradient(90deg, transparent 0%, #C8A97E 20%, #C8A97E 80%, transparent 100%);
+  height: 1px;
+  max-width: 200px;
+  margin: 0 auto;
 }
