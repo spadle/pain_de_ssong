@@ -203,14 +203,14 @@ function MenuCard({ item, index }: { item: MenuItem; index: number }) {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -10 }}
       transition={{ duration: 0.5, delay: index * 0.08 }}
-      className="menu-card-shimmer bg-cream border border-gold/10 p-6 hover:border-gold/30 transition-all duration-500 group"
+      className="menu-card-shimmer bg-cream border border-gold/15 p-6 hover:border-gold/40 transition-all duration-500 group"
     >
       <div className="flex justify-between items-start mb-3">
         <h4 className="font-[family-name:var(--font-playfair)] text-lg text-warm-brown group-hover:text-gold transition-colors duration-300">
           {item.name}
         </h4>
         {item.badge && (
-          <span className="text-xs font-[family-name:var(--font-cormorant)] tracking-wider uppercase px-2 py-0.5 bg-gold/10 text-gold border border-gold/20">
+          <span className="gold-badge text-xs font-[family-name:var(--font-cormorant)] tracking-wider uppercase px-2.5 py-0.5 font-semibold">
             {item.badge}
           </span>
         )}
@@ -219,8 +219,8 @@ function MenuCard({ item, index }: { item: MenuItem; index: number }) {
         {item.description}
       </p>
       <div className="flex items-center gap-2">
-        <div className="flex-1 border-b border-dotted border-gold/20" />
-        <span className="font-[family-name:var(--font-playfair)] text-gold text-lg">
+        <div className="flex-1 border-b border-dotted border-gold/25" />
+        <span className="font-[family-name:var(--font-playfair)] text-gold font-medium text-lg">
           {item.price}
         </span>
       </div>
@@ -240,9 +240,11 @@ export default function Menu() {
       id="menu"
       className="py-28 md:py-36 bg-cream-dark relative overflow-hidden"
     >
-      {/* Corner decorations */}
-      <div className="absolute top-0 left-0 w-32 h-32 border-t border-l border-gold/10 m-8" />
-      <div className="absolute bottom-0 right-0 w-32 h-32 border-b border-r border-gold/10 m-8" />
+      {/* Corner decorations - gold accented */}
+      <div className="absolute top-0 left-0 w-40 h-40 border-t border-l border-gold/20 m-8" />
+      <div className="absolute bottom-0 right-0 w-40 h-40 border-b border-r border-gold/20 m-8" />
+      <div className="absolute top-0 right-0 w-20 h-20 border-t border-r border-gold/10 m-8" />
+      <div className="absolute bottom-0 left-0 w-20 h-20 border-b border-l border-gold/10 m-8" />
 
       <div ref={ref} className="max-w-6xl mx-auto px-6 md:px-12">
         {/* Header */}
@@ -274,8 +276,8 @@ export default function Menu() {
               onClick={() => setActiveCategory(category.id)}
               className={`px-5 md:px-7 py-3 font-[family-name:var(--font-cormorant)] text-base md:text-lg tracking-wide transition-all duration-300 border ${
                 activeCategory === category.id
-                  ? "bg-warm-brown text-cream border-warm-brown"
-                  : "bg-transparent text-brown-light border-gold/20 hover:border-gold/50"
+                  ? "gold-shimmer-btn text-warm-brown border-gold/40 font-semibold"
+                  : "bg-transparent text-brown-light border-gold/20 hover:border-gold/50 hover:bg-gold/5"
               }`}
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}

@@ -110,7 +110,7 @@ export default function Hero() {
             href="https://www.instagram.com/pain_de_ssong/"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-10 py-3.5 border border-gold text-gold font-[family-name:var(--font-cormorant)] text-lg tracking-widest uppercase hover:bg-gold hover:text-cream transition-all duration-300 backdrop-blur-sm"
+            className="gold-shimmer-btn px-10 py-3.5 text-warm-brown font-[family-name:var(--font-cormorant)] text-lg tracking-widest uppercase font-semibold"
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
           >

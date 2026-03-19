@@ -29,7 +29,7 @@ export default function Navbar() {
         transition={{ duration: 0.8, ease: "easeOut" }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled
-            ? "bg-cream/90 backdrop-blur-md shadow-sm"
+            ? "bg-cream/90 backdrop-blur-md nav-gold-border"
             : "bg-transparent"
         }`}
       >
@@ -62,7 +62,7 @@ export default function Navbar() {
                 href="https://www.instagram.com/pain_de_ssong/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-5 py-2 border border-gold text-gold font-[family-name:var(--font-cormorant)] text-lg hover:bg-gold hover:text-cream transition-all duration-300"
+                className="gold-outline-btn px-5 py-2 text-gold font-[family-name:var(--font-cormorant)] text-lg hover:text-warm-brown"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >

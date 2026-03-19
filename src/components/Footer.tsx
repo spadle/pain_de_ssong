@@ -5,8 +5,9 @@ import { motion } from "framer-motion";
 export default function Footer() {
   return (
     <footer className="bg-charcoal py-16 relative overflow-hidden">
-      {/* Subtle top border */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
+      {/* Gold top border */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/40 to-transparent" />
+      <div className="absolute top-px left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/15 to-transparent" />
 
       <div className="max-w-6xl mx-auto px-6 md:px-12">
         <div className="grid md:grid-cols-3 gap-12 md:gap-16 mb-12">

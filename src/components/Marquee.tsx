@@ -19,7 +19,7 @@ const items = [
 
 export default function Marquee() {
   return (
-    <div className="py-8 bg-warm-brown overflow-hidden">
+    <div className="py-6 bg-gradient-to-r from-warm-brown via-brown-light/90 to-warm-brown overflow-hidden border-y border-gold/15">
       <motion.div
         animate={{ x: ["0%", "-50%"] }}
         transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
@@ -28,10 +28,10 @@ export default function Marquee() {
         {[...items, ...items].map((item, i) => (
           <span
             key={i}
-            className="font-[family-name:var(--font-playfair)] text-lg md:text-xl text-cream/20 tracking-widest uppercase flex items-center gap-8"
+            className="font-[family-name:var(--font-playfair)] text-lg md:text-xl text-gold/25 tracking-widest uppercase flex items-center gap-8"
           >
             {item}
-            <span className="text-gold/30 text-sm">✦</span>
+            <span className="text-gold/40 text-xs">◆</span>
           </span>
         ))}
       </motion.div>
