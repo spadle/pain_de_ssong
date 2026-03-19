@@ -2,6 +2,7 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import Image from "next/image";
 
 export default function Hero() {
   const ref = useRef(null);
@@ -10,9 +11,9 @@ export default function Hero() {
     offset: ["start start", "end start"],
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
   const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
+  const imgScale = useTransform(scrollYProgress, [0, 1], [1, 1.15]);
 
   return (
     <section
@@ -20,32 +21,25 @@ export default function Hero() {
       ref={ref}
       className="relative h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Background pattern */}
-      <motion.div
-        style={{ y, scale }}
-        className="absolute inset-0 bg-cream-dark"
-      >
-        {/* Decorative wheat/grain pattern */}
-        <div className="absolute inset-0 opacity-[0.04]">
-          <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <pattern id="wheat" x="0" y="0" width="120" height="120" patternUnits="userSpaceOnUse">
-                <path d="M60 10 Q65 30 60 50 Q55 30 60 10Z" fill="#4A3228" />
-                <path d="M55 15 Q45 25 40 20" stroke="#4A3228" fill="none" strokeWidth="0.5" />
-                <path d="M65 15 Q75 25 80 20" stroke="#4A3228" fill="none" strokeWidth="0.5" />
-                <path d="M55 25 Q45 35 38 30" stroke="#4A3228" fill="none" strokeWidth="0.5" />
-                <path d="M65 25 Q75 35 82 30" stroke="#4A3228" fill="none" strokeWidth="0.5" />
-                <circle cx="60" cy="90" r="1" fill="#C8A97E" opacity="0.5" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#wheat)" />
-          </svg>
-        </div>
+      {/* Background image */}
+      <motion.div style={{ scale: imgScale }} className="absolute inset-0">
+        <Image
+          src="/images/cheesecake.jpg"
+          alt="PaindeSsong cheesecake"
+          fill
+          className="object-cover"
+          priority
+          quality={90}
+        />
+        {/* Overlay gradient */}
+        <div className="absolute inset-0 bg-gradient-to-b from-cream/85 via-cream/70 to-cream/90" />
+        {/* Warm tint */}
+        <div className="absolute inset-0 bg-warm-brown/10" />
       </motion.div>
 
       {/* Content */}
       <motion.div
-        style={{ opacity }}
+        style={{ opacity, y }}
         className="relative z-10 text-center px-6 max-w-4xl"
       >
         {/* Top decorative element */}
@@ -116,7 +110,7 @@ export default function Hero() {
             href="https://www.instagram.com/pain_de_ssong/"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-10 py-3.5 border border-gold text-gold font-[family-name:var(--font-cormorant)] text-lg tracking-widest uppercase hover:bg-gold hover:text-cream transition-all duration-300"
+            className="px-10 py-3.5 border border-gold text-gold font-[family-name:var(--font-cormorant)] text-lg tracking-widest uppercase hover:bg-gold hover:text-cream transition-all duration-300 backdrop-blur-sm"
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
           >
@@ -138,7 +132,7 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2.5 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-10"
       >
         <span className="font-[family-name:var(--font-cormorant)] text-sm tracking-[0.2em] text-brown-light/60 uppercase">
           Scroll

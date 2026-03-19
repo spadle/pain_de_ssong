@@ -2,87 +2,78 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
+import Image from "next/image";
 
 const galleryItems = [
   {
+    src: "/images/brownie-cheesecake.jpg",
     title: "Brownie Cheesecake",
     description: "Our signature — silky smooth and richly creamy",
-    color: "from-amber-800/30 to-amber-900/50",
-    emoji: "🍮",
     span: "md:col-span-2 md:row-span-2",
-    aspect: "aspect-square",
+    postUrl: "https://www.instagram.com/p/DSyaDfela8v/",
   },
   {
+    src: "/images/madeleines.jpg",
     title: "Chunky Madeleines",
     description: "Golden shells with bold, chunky flavors",
-    color: "from-yellow-700/30 to-amber-800/40",
-    emoji: "🧁",
     span: "",
-    aspect: "aspect-square",
+    postUrl: "https://www.instagram.com/p/DVVCngmDtVq/",
   },
   {
-    title: "Black Sesame Cheesecake",
-    description: "Nutty, earthy perfection",
-    color: "from-stone-700/40 to-stone-900/50",
-    emoji: "🪨",
-    span: "",
-    aspect: "aspect-square",
-  },
-  {
+    src: "/images/matcha-madeleine.jpg",
     title: "Matcha Madeleine",
     description: "Premium Japanese matcha in every bite",
-    color: "from-green-700/30 to-green-900/40",
-    emoji: "🍵",
     span: "",
-    aspect: "aspect-square",
+    postUrl: "https://www.instagram.com/p/DSqBac-FVLh/",
   },
   {
-    title: "Choco Forest",
-    description: "Dark chocolate meets bittersweet matcha",
-    color: "from-emerald-900/30 to-stone-900/40",
-    emoji: "🌳",
+    src: "/images/assorted.jpg",
+    title: "Assorted Treats",
+    description: "Our weekly selection of handcrafted delights",
     span: "",
-    aspect: "aspect-square",
+    postUrl: "https://www.instagram.com/p/DVL4IYNlUXw/",
   },
   {
-    title: "Gift Box Collection",
-    description: "Beautifully packaged for sharing",
-    color: "from-rose-800/20 to-amber-800/30",
-    emoji: "🎁",
+    src: "/images/gift-box.jpg",
+    title: "Gift Box",
+    description: "Beautifully packaged, perfect for sharing",
+    span: "",
+    postUrl: "https://www.instagram.com/p/DTCYye6jvQW/",
+  },
+  {
+    src: "/images/valentines.jpg",
+    title: "Special Occasions",
+    description: "Valentine's bouquets and seasonal offerings",
     span: "md:col-span-2",
-    aspect: "aspect-[2/1]",
+    postUrl: "https://www.instagram.com/p/DUjHvrRmccO/",
   },
   {
-    title: "Fig Financier",
-    description: "Browned butter, almond flour, sweet fig",
-    color: "from-purple-900/20 to-amber-900/30",
-    emoji: "🧈",
+    src: "/images/financiers.jpg",
+    title: "Financiers",
+    description: "French almond-flour browned butter mini cakes",
     span: "",
-    aspect: "aspect-square",
+    postUrl: "https://www.instagram.com/p/DR5WQicEiA1/",
   },
   {
-    title: "Portuguese Egg Tart",
-    description: "Crispy puff pastry, silky custard",
-    color: "from-yellow-600/30 to-orange-800/40",
-    emoji: "🥚",
+    src: "/images/christmas-tart.jpg",
+    title: "Festive Bakes",
+    description: "Holiday treats baked with the sweetest love",
     span: "",
-    aspect: "aspect-square",
+    postUrl: "https://www.instagram.com/p/DSMSKotjrgw/",
   },
   {
-    title: "Marble Pound Cake",
-    description: "Classic vanilla-chocolate swirl",
-    color: "from-amber-700/30 to-stone-800/40",
-    emoji: "🍫",
+    src: "/images/christmas.jpg",
+    title: "Christmas Cheesecakes",
+    description: "Last-minute holiday indulgence",
     span: "md:col-span-2",
-    aspect: "aspect-[2/1]",
+    postUrl: "https://www.instagram.com/p/DSRdNx2FW06/",
   },
   {
-    title: "Tiramisu Madeleines",
-    description: "Coffee-soaked with mascarpone cream",
-    color: "from-amber-900/30 to-stone-800/50",
-    emoji: "☕",
+    src: "/images/with-love.jpg",
+    title: "With Love",
+    description: "Every order wrapped with care and faith",
     span: "md:col-span-2",
-    aspect: "aspect-[2/1]",
+    postUrl: "https://www.instagram.com/p/DTeJiABDF37/",
   },
 ];
 
@@ -96,55 +87,49 @@ function GalleryCard({
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <motion.div
+    <motion.a
+      href={item.postUrl}
+      target="_blank"
+      rel="noopener noreferrer"
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.7, delay: index * 0.08 }}
-      className={`gallery-item ${item.span} ${item.aspect} relative cursor-pointer overflow-hidden group`}
+      className={`gallery-item ${item.span} relative cursor-pointer overflow-hidden group block`}
+      style={{ aspectRatio: item.span.includes("col-span-2") && !item.span.includes("row-span-2") ? "2/1" : "1/1" }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Background gradient */}
-      <div
-        className={`absolute inset-0 bg-gradient-to-br ${item.color} transition-all duration-700`}
+      {/* Real photo */}
+      <Image
+        src={item.src}
+        alt={item.title}
+        fill
+        className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+        sizes={item.span.includes("col-span-2") ? "(max-width: 768px) 100vw, 50vw" : "(max-width: 768px) 50vw, 25vw"}
       />
 
-      {/* Pattern overlay */}
-      <div className="absolute inset-0 opacity-10">
-        <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <pattern id={`dots-${index}`} x="0" y="0" width="30" height="30" patternUnits="userSpaceOnUse">
-              <circle cx="15" cy="15" r="1" fill="#C8A97E" />
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill={`url(#dots-${index})`} />
-        </svg>
-      </div>
+      {/* Overlay on hover */}
+      <motion.div
+        animate={isHovered ? { opacity: 1 } : { opacity: 0 }}
+        transition={{ duration: 0.3 }}
+        className="absolute inset-0 bg-gradient-to-t from-warm-brown/80 via-warm-brown/30 to-transparent z-10"
+      />
 
-      {/* Content */}
-      <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center z-10">
-        <motion.span
-          animate={isHovered ? { scale: 1.3, y: -10 } : { scale: 1, y: 0 }}
-          transition={{ duration: 0.4 }}
-          className="text-5xl md:text-6xl mb-4 drop-shadow-lg"
-        >
-          {item.emoji}
-        </motion.span>
-
+      {/* Content on hover */}
+      <div className="absolute inset-0 flex flex-col items-center justify-end p-5 md:p-6 text-center z-20">
         <motion.h3
-          animate={isHovered ? { y: -5 } : { y: 0 }}
+          animate={isHovered ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
           transition={{ duration: 0.3 }}
-          className="font-[family-name:var(--font-playfair)] text-lg md:text-xl text-cream mb-2 drop-shadow-md"
+          className="font-[family-name:var(--font-playfair)] text-base md:text-lg text-cream mb-1 drop-shadow-md"
         >
           {item.title}
         </motion.h3>
 
         <motion.p
-          initial={{ opacity: 0 }}
-          animate={isHovered ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
-          transition={{ duration: 0.3 }}
-          className="font-[family-name:var(--font-cormorant)] text-cream/80 text-base"
+          animate={isHovered ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
+          transition={{ duration: 0.3, delay: 0.05 }}
+          className="font-[family-name:var(--font-cormorant)] text-cream/80 text-sm md:text-base"
         >
           {item.description}
         </motion.p>
@@ -153,9 +138,9 @@ function GalleryCard({
       {/* Hover border */}
       <motion.div
         animate={isHovered ? { opacity: 1 } : { opacity: 0 }}
-        className="absolute inset-2 border border-gold/30 z-10 pointer-events-none"
+        className="absolute inset-2 border border-gold/30 z-20 pointer-events-none"
       />
-    </motion.div>
+    </motion.a>
   );
 }
 

@@ -2,21 +2,25 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import Image from "next/image";
 
 const highlights = [
   {
+    image: "/images/brownie-cheesecake.jpg",
     quote:
-      "The Brownie Cheesecake is silky smooth, richly creamy, and crafted to pair beautifully with coffee.",
+      "Silky smooth, richly creamy, and crafted to pair beautifully with coffee.",
     item: "Brownie Cheesecake",
     tag: "Signature",
   },
   {
+    image: "/images/madeleines.jpg",
     quote:
       "Our newest Chunky Choco Forest Madeleines, where dark chocolate meets bittersweet matcha, has already become a best-seller.",
     item: "Choco Forest Madeleine",
     tag: "Best Seller",
   },
   {
+    image: "/images/financiers.jpg",
     quote:
       "These French almond-flour browned butter mini cakes are small but dangerously delicious... try one and you might not stop at three.",
     item: "Financiers",
@@ -30,7 +34,6 @@ export default function WeeklyHighlight() {
 
   return (
     <section className="py-24 md:py-32 bg-cream-dark relative overflow-hidden">
-      {/* Decorative quotes */}
       <div className="absolute top-12 left-12 font-[family-name:var(--font-playfair)] text-[200px] text-gold/[0.04] leading-none select-none">
         &ldquo;
       </div>
@@ -51,28 +54,43 @@ export default function WeeklyHighlight() {
           <div className="section-divider mt-6" />
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-6">
           {highlights.map((item, i) => (
             <motion.div
               key={item.item}
               initial={{ opacity: 0, y: 40 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: i * 0.2 }}
-              className="bg-cream border border-gold/10 p-8 text-center hover:border-gold/25 transition-all duration-500 group"
+              className="bg-cream border border-gold/10 overflow-hidden hover:border-gold/25 transition-all duration-500 group"
             >
-              <span className="font-[family-name:var(--font-playfair)] text-5xl text-gold/20 leading-none">
-                &ldquo;
-              </span>
-              <p className="font-[family-name:var(--font-cormorant)] text-brown-light text-lg italic leading-relaxed mt-2 mb-6">
-                {item.quote}
-              </p>
-              <div className="w-8 h-px bg-gold/30 mx-auto mb-4" />
-              <p className="font-[family-name:var(--font-playfair)] text-warm-brown text-base group-hover:text-gold transition-colors duration-300">
-                {item.item}
-              </p>
-              <span className="font-[family-name:var(--font-cormorant)] text-gold/60 text-sm tracking-wider uppercase">
-                {item.tag}
-              </span>
+              {/* Photo */}
+              <div className="relative h-48 overflow-hidden">
+                <Image
+                  src={item.image}
+                  alt={item.item}
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-cream via-transparent to-transparent" />
+              </div>
+
+              {/* Content */}
+              <div className="p-6 pt-2 text-center">
+                <span className="font-[family-name:var(--font-playfair)] text-3xl text-gold/20 leading-none">
+                  &ldquo;
+                </span>
+                <p className="font-[family-name:var(--font-cormorant)] text-brown-light text-lg italic leading-relaxed mt-1 mb-5">
+                  {item.quote}
+                </p>
+                <div className="w-8 h-px bg-gold/30 mx-auto mb-3" />
+                <p className="font-[family-name:var(--font-playfair)] text-warm-brown text-base group-hover:text-gold transition-colors duration-300">
+                  {item.item}
+                </p>
+                <span className="font-[family-name:var(--font-cormorant)] text-gold/60 text-sm tracking-wider uppercase">
+                  {item.tag}
+                </span>
+              </div>
             </motion.div>
           ))}
         </div>

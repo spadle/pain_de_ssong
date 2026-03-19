@@ -2,6 +2,7 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import Image from "next/image";
 
 export default function About() {
   const ref = useRef(null);
@@ -9,54 +10,51 @@ export default function About() {
 
   return (
     <section id="about" className="py-28 md:py-36 bg-cream relative overflow-hidden">
-      {/* Background decorative circles */}
       <div className="absolute top-20 right-10 w-64 h-64 rounded-full bg-gold/[0.03]" />
       <div className="absolute bottom-20 left-10 w-48 h-48 rounded-full bg-rose/[0.04]" />
 
       <div ref={ref} className="max-w-6xl mx-auto px-6 md:px-12">
         <div className="grid md:grid-cols-2 gap-16 md:gap-24 items-center">
-          {/* Left: Decorative element */}
+          {/* Left: Real photo collage */}
           <motion.div
             initial={{ opacity: 0, x: -60 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 1, ease: "easeOut" }}
             className="relative"
           >
-            <div className="relative aspect-[4/5] bg-cream-dark overflow-hidden">
-              {/* Decorative bakery illustration */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <svg viewBox="0 0 400 500" className="w-full h-full p-12 opacity-90">
-                  {/* Madeleine shape */}
-                  <ellipse cx="200" cy="180" rx="120" ry="80" fill="none" stroke="#C8A97E" strokeWidth="1.5" />
-                  <ellipse cx="200" cy="180" rx="90" ry="60" fill="none" stroke="#C8A97E" strokeWidth="0.8" opacity="0.5" />
-                  {/* Shell ridges */}
-                  {[...Array(8)].map((_, i) => (
-                    <line
-                      key={i}
-                      x1="200"
-                      y1="120"
-                      x2={140 + i * 15}
-                      y2="240"
-                      stroke="#C8A97E"
-                      strokeWidth="0.5"
-                      opacity="0.4"
-                    />
-                  ))}
-                  {/* Text */}
-                  <text x="200" y="320" textAnchor="middle" fill="#4A3228" fontFamily="serif" fontSize="24" fontStyle="italic">
-                    Baked with Love
-                  </text>
-                  <text x="200" y="360" textAnchor="middle" fill="#C8A97E" fontFamily="serif" fontSize="16" letterSpacing="4">
-                    SINCE 2023
-                  </text>
-                  {/* Cross symbol */}
-                  <line x1="200" y1="390" x2="200" y2="420" stroke="#C8A97E" strokeWidth="1" />
-                  <line x1="188" y1="400" x2="212" y2="400" stroke="#C8A97E" strokeWidth="1" />
-                </svg>
+            <div className="relative">
+              {/* Main image */}
+              <div className="relative aspect-[4/5] overflow-hidden shadow-xl">
+                <Image
+                  src="/images/with-love.jpg"
+                  alt="PaindeSsong pastries with love"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+                {/* Warm overlay */}
+                <div className="absolute inset-0 bg-warm-brown/5" />
               </div>
+
+              {/* Floating smaller image */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                transition={{ duration: 0.8, delay: 0.5 }}
+                className="absolute -bottom-8 -right-8 w-36 h-36 md:w-44 md:h-44 shadow-lg border-4 border-cream z-10"
+              >
+                <Image
+                  src="/images/gift-box.jpg"
+                  alt="PaindeSsong gift box"
+                  fill
+                  className="object-cover"
+                  sizes="176px"
+                />
+              </motion.div>
+
               {/* Corner accents */}
-              <div className="absolute top-4 left-4 w-12 h-12 border-t border-l border-gold/40" />
-              <div className="absolute bottom-4 right-4 w-12 h-12 border-b border-r border-gold/40" />
+              <div className="absolute -top-3 -left-3 w-12 h-12 border-t border-l border-gold/40" />
+              <div className="absolute -bottom-3 -right-3 w-12 h-12 border-b border-r border-gold/40 z-20" />
             </div>
           </motion.div>
 

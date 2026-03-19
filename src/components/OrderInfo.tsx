@@ -2,6 +2,7 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import Image from "next/image";
 
 const steps = [
   {
@@ -43,17 +44,16 @@ export default function OrderInfo() {
       id="order"
       className="py-28 md:py-36 bg-warm-brown relative overflow-hidden"
     >
-      {/* Background pattern */}
-      <div className="absolute inset-0 opacity-[0.03]">
-        <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <pattern id="cross" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
-              <line x1="30" y1="20" x2="30" y2="40" stroke="#FFF8F0" strokeWidth="0.5" />
-              <line x1="20" y1="30" x2="40" y2="30" stroke="#FFF8F0" strokeWidth="0.5" />
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#cross)" />
-        </svg>
+      {/* Background photo */}
+      <div className="absolute inset-0">
+        <Image
+          src="/images/cheesecake.jpg"
+          alt=""
+          fill
+          className="object-cover opacity-15"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-warm-brown/85" />
       </div>
 
       <div ref={ref} className="max-w-6xl mx-auto px-6 md:px-12 relative z-10">
