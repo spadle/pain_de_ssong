@@ -266,24 +266,51 @@ export default function Menu() {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="flex flex-wrap justify-center gap-3 md:gap-4 mb-14"
+          className="flex flex-wrap justify-center gap-3 md:gap-5 mb-14"
         >
-          {menuData.map((category) => (
-            <motion.button
-              key={category.id}
-              onClick={() => setActiveCategory(category.id)}
-              className={`px-5 md:px-7 py-2.5 font-[family-name:var(--font-cormorant)] text-base md:text-lg tracking-wide transition-all duration-300 ${
-                activeCategory === category.id
-                  ? "bg-warm-brown text-cream"
-                  : "text-brown-light/60 hover:text-warm-brown"
-              }`}
-              whileHover={{ y: -1 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <span className="mr-2">{category.emoji}</span>
-              {category.title}
-            </motion.button>
-          ))}
+          {menuData.map((category) => {
+            const isActive = activeCategory === category.id;
+            return (
+              <motion.button
+                key={category.id}
+                onClick={() => setActiveCategory(category.id)}
+                className="relative px-6 md:px-8 py-3 md:py-3.5 rounded-full font-[family-name:var(--font-cormorant)] text-base md:text-lg tracking-wide cursor-pointer"
+                whileHover={{ scale: 1.06, y: -3 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ type: "spring", stiffness: 400, damping: 17 }}
+              >
+                {/* Sliding pill background */}
+                {isActive && (
+                  <motion.div
+                    layoutId="activeMenuTab"
+                    className="absolute inset-0 bg-warm-brown rounded-full"
+                    transition={{ type: "spring", stiffness: 350, damping: 30 }}
+                  />
+                )}
+
+                {/* Inactive ring — visible only when not active */}
+                {!isActive && (
+                  <div className="absolute inset-0 rounded-full border border-warm-brown/12 group-hover:border-warm-brown/25 transition-colors duration-300" />
+                )}
+
+                {/* Label */}
+                <span
+                  className={`relative z-10 flex items-center gap-2 transition-colors duration-200 ${
+                    isActive ? "text-cream" : "text-brown-light/60"
+                  }`}
+                >
+                  <motion.span
+                    animate={isActive ? { scale: 1.15 } : { scale: 1 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                    className="text-base md:text-lg"
+                  >
+                    {category.emoji}
+                  </motion.span>
+                  {category.title}
+                </span>
+              </motion.button>
+            );
+          })}
         </motion.div>
 
         {/* Category subtitle */}
