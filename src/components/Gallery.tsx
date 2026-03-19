@@ -73,16 +73,16 @@ const galleryItems = [
     description: "Classic vanilla-chocolate swirl",
     color: "from-amber-700/30 to-stone-800/40",
     emoji: "🍫",
-    span: "",
-    aspect: "aspect-square",
+    span: "md:col-span-2",
+    aspect: "aspect-[2/1]",
   },
   {
     title: "Tiramisu Madeleines",
     description: "Coffee-soaked with mascarpone cream",
     color: "from-amber-900/30 to-stone-800/50",
     emoji: "☕",
-    span: "",
-    aspect: "aspect-square",
+    span: "md:col-span-2",
+    aspect: "aspect-[2/1]",
   },
 ];
 
