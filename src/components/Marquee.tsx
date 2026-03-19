@@ -19,19 +19,19 @@ const items = [
 
 export default function Marquee() {
   return (
-    <div className="py-6 bg-gradient-to-r from-warm-brown via-brown-light/90 to-warm-brown overflow-hidden border-y border-gold/15">
+    <div className="py-5 bg-warm-brown overflow-hidden">
       <motion.div
         animate={{ x: ["0%", "-50%"] }}
-        transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-        className="flex gap-8 whitespace-nowrap"
+        transition={{ duration: 35, repeat: Infinity, ease: "linear" }}
+        className="flex gap-12 whitespace-nowrap"
       >
         {[...items, ...items].map((item, i) => (
           <span
             key={i}
-            className="font-[family-name:var(--font-playfair)] text-lg md:text-xl text-gold/25 tracking-widest uppercase flex items-center gap-8"
+            className="font-[family-name:var(--font-cormorant)] text-base md:text-lg text-cream/15 tracking-[0.2em] uppercase flex items-center gap-12"
           >
             {item}
-            <span className="text-gold/40 text-xs">◆</span>
+            <span className="text-gold/20 text-[8px]">&#9671;</span>
           </span>
         ))}
       </motion.div>

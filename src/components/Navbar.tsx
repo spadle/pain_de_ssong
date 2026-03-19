@@ -29,7 +29,7 @@ export default function Navbar() {
         transition={{ duration: 0.8, ease: "easeOut" }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled
-            ? "bg-cream/90 backdrop-blur-md nav-gold-border"
+            ? "bg-cream/92 backdrop-blur-md border-b border-gold/10"
             : "bg-transparent"
         }`}
       >
@@ -41,7 +41,7 @@ export default function Navbar() {
               whileHover={{ scale: 1.02 }}
             >
               <span className="text-warm-brown">Paine</span>
-              <span className="text-gold">de</span>
+              <span className="text-gold italic">de</span>
               <span className="text-warm-brown">Ssong</span>
             </motion.a>
 
@@ -51,20 +51,19 @@ export default function Navbar() {
                 <motion.a
                   key={link.name}
                   href={link.href}
-                  className="font-[family-name:var(--font-cormorant)] text-lg text-brown-light hover:text-gold transition-colors relative group"
-                  whileHover={{ y: -2 }}
+                  className="font-[family-name:var(--font-cormorant)] text-lg text-brown-light/70 hover:text-warm-brown transition-colors relative group"
+                  whileHover={{ y: -1 }}
                 >
                   {link.name}
-                  <span className="absolute -bottom-1 left-0 w-0 h-px bg-gold transition-all duration-300 group-hover:w-full" />
+                  <span className="absolute -bottom-1 left-0 w-0 h-px bg-gold/50 transition-all duration-300 group-hover:w-full" />
                 </motion.a>
               ))}
               <motion.a
                 href="https://www.instagram.com/pain_de_ssong/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="gold-outline-btn px-5 py-2 text-gold font-[family-name:var(--font-cormorant)] text-lg hover:text-warm-brown"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                className="px-5 py-2 border border-warm-brown/20 text-warm-brown font-[family-name:var(--font-cormorant)] text-lg hover:border-gold hover:text-gold transition-all duration-300"
+                whileHover={{ y: -1 }}
               >
                 Instagram
               </motion.a>
@@ -121,7 +120,7 @@ export default function Navbar() {
               transition={{ delay: 0.5 }}
               href="https://www.instagram.com/pain_de_ssong/"
               target="_blank"
-              className="mt-4 px-8 py-3 border border-gold text-gold font-[family-name:var(--font-playfair)] text-xl hover:bg-gold hover:text-cream transition-all"
+              className="mt-4 px-8 py-3 border border-warm-brown/20 text-warm-brown font-[family-name:var(--font-playfair)] text-xl hover:text-gold hover:border-gold transition-all"
             >
               @pain_de_ssong
             </motion.a>

@@ -31,10 +31,7 @@ export default function Hero() {
           priority
           quality={90}
         />
-        {/* Overlay gradient */}
-        <div className="absolute inset-0 bg-gradient-to-b from-cream/85 via-cream/70 to-cream/90" />
-        {/* Warm tint */}
-        <div className="absolute inset-0 bg-warm-brown/10" />
+        <div className="absolute inset-0 bg-gradient-to-b from-cream/80 via-cream/65 to-cream/85" />
       </motion.div>
 
       {/* Content */}
@@ -42,42 +39,36 @@ export default function Hero() {
         style={{ opacity, y }}
         className="relative z-10 text-center px-6 max-w-4xl"
       >
-        {/* Top decorative element */}
         <motion.div
           initial={{ scaleX: 0 }}
           animate={{ scaleX: 1 }}
-          transition={{ duration: 1.2, delay: 0.3 }}
-          className="decorative-line mx-auto mb-8"
+          transition={{ duration: 1, delay: 0.3 }}
+          className="decorative-line mx-auto mb-10"
         />
 
-        {/* Korean name */}
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
-          className="font-[family-name:var(--font-cormorant)] text-gold text-lg md:text-xl tracking-[0.3em] uppercase mb-4"
+          className="font-[family-name:var(--font-cormorant)] text-gold text-base md:text-lg tracking-[0.4em] uppercase mb-5"
         >
           빵드숑
         </motion.p>
 
-        {/* Main title */}
         <motion.h1
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.7 }}
-          className="font-[family-name:var(--font-playfair)] text-5xl md:text-7xl lg:text-8xl text-warm-brown leading-[0.95] mb-6"
+          className="font-[family-name:var(--font-playfair)] text-5xl md:text-7xl lg:text-[5.5rem] text-warm-brown leading-[0.95] mb-7"
         >
-          Paine
-          <span className="italic text-gold">de</span>
-          Ssong
+          Paine<span className="italic text-gold">de</span>Ssong
         </motion.h1>
 
-        {/* Subtitle */}
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1 }}
-          className="font-[family-name:var(--font-cormorant)] text-xl md:text-2xl text-brown-light tracking-wide mb-2"
+          className="font-[family-name:var(--font-cormorant)] text-xl md:text-2xl text-brown-light/80 tracking-wide mb-1"
         >
           Artisan Home Bakery
         </motion.p>
@@ -85,24 +76,24 @@ export default function Hero() {
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1.2 }}
-          className="font-[family-name:var(--font-cormorant)] text-lg text-gold/80 tracking-wider mb-10"
+          transition={{ duration: 1, delay: 1.15 }}
+          className="font-[family-name:var(--font-cormorant)] text-base text-brown-light/50 tracking-widest uppercase mb-12"
         >
           Fort Lee, NJ
         </motion.p>
 
         {/* CTA */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.5 }}
+          transition={{ duration: 0.8, delay: 1.4 }}
           className="flex flex-col sm:flex-row gap-4 justify-center"
         >
           <motion.a
             href="#menu"
-            className="px-10 py-3.5 bg-warm-brown text-cream font-[family-name:var(--font-cormorant)] text-lg tracking-widest uppercase hover:bg-brown-light transition-colors duration-300"
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.97 }}
+            className="px-10 py-3.5 bg-warm-brown text-cream font-[family-name:var(--font-cormorant)] text-lg tracking-[0.15em] uppercase hover:bg-warm-brown/85 transition-all duration-300"
+            whileHover={{ y: -2 }}
+            whileTap={{ scale: 0.98 }}
           >
             View Menu
           </motion.a>
@@ -110,20 +101,19 @@ export default function Hero() {
             href="https://www.instagram.com/pain_de_ssong/"
             target="_blank"
             rel="noopener noreferrer"
-            className="gold-shimmer-btn px-10 py-3.5 text-warm-brown font-[family-name:var(--font-cormorant)] text-lg tracking-widest uppercase font-semibold"
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.97 }}
+            className="px-10 py-3.5 bg-gold text-white font-[family-name:var(--font-cormorant)] text-lg tracking-[0.15em] uppercase hover:bg-gold/85 transition-all duration-300"
+            whileHover={{ y: -2 }}
+            whileTap={{ scale: 0.98 }}
           >
             DM to Order
           </motion.a>
         </motion.div>
 
-        {/* Bottom decorative */}
         <motion.div
           initial={{ scaleX: 0 }}
           animate={{ scaleX: 1 }}
-          transition={{ duration: 1.2, delay: 1.8 }}
-          className="decorative-line mx-auto mt-12"
+          transition={{ duration: 1, delay: 1.7 }}
+          className="decorative-line mx-auto mt-14"
         />
       </motion.div>
 
@@ -131,16 +121,16 @@ export default function Hero() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 2.5 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-10"
+        transition={{ delay: 2.2 }}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 z-10"
       >
-        <span className="font-[family-name:var(--font-cormorant)] text-sm tracking-[0.2em] text-brown-light/60 uppercase">
+        <span className="font-[family-name:var(--font-cormorant)] text-xs tracking-[0.3em] text-brown-light/40 uppercase">
           Scroll
         </span>
         <motion.div
-          animate={{ y: [0, 8, 0] }}
+          animate={{ y: [0, 6, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
-          className="w-px h-8 bg-gradient-to-b from-gold/60 to-transparent"
+          className="w-px h-6 bg-gold/30"
         />
       </motion.div>
     </section>

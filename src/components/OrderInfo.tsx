@@ -117,7 +117,7 @@ export default function OrderInfo() {
           {details.map((detail) => (
             <div
               key={detail.label}
-              className="bg-brown-light/30 border border-gold/15 p-6 text-center hover:border-gold/40 hover:bg-brown-light/40 transition-all duration-300"
+              className="bg-white/5 border border-white/10 p-6 text-center hover:border-white/20 transition-all duration-300"
             >
               <span className="text-2xl mb-3 block">{detail.icon}</span>
               <p className="font-[family-name:var(--font-cormorant)] text-cream/50 text-sm tracking-wider uppercase mb-1">
@@ -141,7 +141,7 @@ export default function OrderInfo() {
             href="https://www.instagram.com/pain_de_ssong/"
             target="_blank"
             rel="noopener noreferrer"
-            className="gold-shimmer-btn inline-flex items-center gap-3 px-12 py-4 text-warm-brown font-[family-name:var(--font-cormorant)] text-xl tracking-widest uppercase font-semibold"
+            className="inline-flex items-center gap-3 px-12 py-4 bg-gold text-white font-[family-name:var(--font-cormorant)] text-xl tracking-[0.15em] uppercase hover:bg-gold/85 transition-all duration-300"
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
           >

@@ -186,7 +186,7 @@ export default function Gallery() {
             href="https://www.instagram.com/pain_de_ssong/"
             target="_blank"
             rel="noopener noreferrer"
-            className="gold-outline-btn inline-flex items-center gap-3 px-8 py-3.5 text-gold font-[family-name:var(--font-cormorant)] text-lg tracking-wider uppercase hover:text-warm-brown"
+            className="inline-flex items-center gap-3 px-8 py-3.5 border border-warm-brown/20 text-warm-brown font-[family-name:var(--font-cormorant)] text-lg tracking-[0.1em] uppercase hover:border-gold hover:text-gold transition-all duration-300"
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
           >
